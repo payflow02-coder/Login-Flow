@@ -1,40 +1,74 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Registration / Login Flow</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Authentication Flow</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>Registration / Login Flow</h1>
-    <p class="subtitle">Процесс регистрации и входа пользователя</p>
+<div class="layout">
 
-    <div class="flow">
+  <aside class="info">
+    <h1>Welcome.</h1>
+    <p>Secure and modern authentication experience.</p>
 
-        <div class="step">
-            <h2>1. Регистрация</h2>
-            <p>Пользователь вводит имя, email и пароль.</p>
-            <button>Register</button>
-        </div>
-
-        <div class="arrow">→</div>
-
-        <div class="step">
-            <h2>2. Вход</h2>
-            <p>Пользователь вводит email и пароль.</p>
-            <button>Login</button>
-        </div>
-
-        <div class="arrow">→</div>
-
-        <div class="step">
-            <h2>3. Личный кабинет</h2>
-            <p>Пользователь попадает в личный кабинет.</p>
-            <button>Profile</button>
-        </div>
-
+    <div class="steps">
+      <div class="step active">Create account</div>
+      <div class="step">Login</div>
+      <div class="step">Dashboard</div>
     </div>
+  </aside>
 
+  <main class="panel">
+
+    <section class="card active">
+      <h2>Create account</h2>
+
+      <div class="field">
+        <input type="text" required>
+        <label>Full name</label>
+      </div>
+
+      <div class="field">
+        <input type="email" required>
+        <label>Email</label>
+      </div>
+
+      <div class="field">
+        <input type="password" id="pass" required oninput="checkPass()">
+        <label>Password</label>
+        <div class="strength" id="strength"></div>
+      </div>
+
+      <button onclick="next()">Continue</button>
+    </section>
+
+    <section class="card">
+      <h2>Login</h2>
+
+      <div class="field">
+        <input type="email" required>
+        <label>Email</label>
+      </div>
+
+      <div class="field">
+        <input type="password" required>
+        <label>Password</label>
+      </div>
+
+      <button onclick="next()">Login</button>
+    </section>
+
+    <section class="card">
+      <h2>Access granted ✅</h2>
+      <p>You are successfully authenticated.</p>
+      <button disabled>Open dashboard</button>
+    </section>
+
+  </main>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
