@@ -2,73 +2,63 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Authentication Flow</title>
+  <title>Cloud OS</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="layout">
+<div id="auth">
+  <div class="card active">
+    <h1>Cloud OS</h1>
+    <p>One account. Infinite services.</p>
+    <button onclick="next()">Get started</button>
+  </div>
 
-  <aside class="info">
-    <h1>Welcome.</h1>
-    <p>Secure and modern authentication experience.</p>
+  <div class="card">
+    <h2>Create account</h2>
+    <input placeholder="Full name">
+    <input placeholder="Email">
+    <button onclick="next()">Continue</button>
+  </div>
 
-    <div class="steps">
-      <div class="step active">Create account</div>
-      <div class="step">Login</div>
-      <div class="step">Dashboard</div>
-    </div>
-  </aside>
+  <div class="card">
+    <h2>Secure your account</h2>
+    <input type="password" id="pass" oninput="strength()" placeholder="Password">
+    <div class="strength"><div id="bar"></div></div>
+    <button onclick="next()">Next</button>
+  </div>
 
-  <main class="panel">
-
-    <section class="card active">
-      <h2>Create account</h2>
-
-      <div class="field">
-        <input type="text" required>
-        <label>Full name</label>
-      </div>
-
-      <div class="field">
-        <input type="email" required>
-        <label>Email</label>
-      </div>
-
-      <div class="field">
-        <input type="password" id="pass" required oninput="checkPass()">
-        <label>Password</label>
-        <div class="strength" id="strength"></div>
-      </div>
-
-      <button onclick="next()">Continue</button>
-    </section>
-
-    <section class="card">
-      <h2>Login</h2>
-
-      <div class="field">
-        <input type="email" required>
-        <label>Email</label>
-      </div>
-
-      <div class="field">
-        <input type="password" required>
-        <label>Password</label>
-      </div>
-
-      <button onclick="next()">Login</button>
-    </section>
-
-    <section class="card">
-      <h2>Access granted ✅</h2>
-      <p>You are successfully authenticated.</p>
-      <button disabled>Open dashboard</button>
-    </section>
-
-  </main>
+  <div class="card">
+    <h2>Verification</h2>
+    <input placeholder="Code from email">
+    <button onclick="enter()">Enter Cloud</button>
+  </div>
 </div>
 
-<script src="script.js"></script>
+<!-- DASHBOARD -->
+<div id="os" class="hidden">
+
+  <aside>
+    <h2>☁ Cloud OS</h2>
+    <ul>
+      <li onclick="openApp('storage')">Storage</li>
+      <li onclick="openApp('mail')">Mail</li>
+      <li onclick="openApp('photos')">Photos</li>
+      <li onclick="openApp('settings')">Settings</li>
+    </ul>
+  </aside>
+
+  <main>
+    <header>
+      <span id="title">Dashboard</span>
+      <button onclick="toggleTheme()">🌗</button>
+    </header>
+
+    <section id="content"></section>
+  </main>
+
+</div>
+
+<script src="app.js"></script>
 </body>
 </html>
